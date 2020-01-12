@@ -1,3 +1,4 @@
+#Made for the sole purpose of GCI 2019
 import requests
 from bs4 import BeautifulSoup as bs4
 def prRed(skk): return str("\033[91m {}\033[00m" .format(skk)) 
@@ -11,20 +12,20 @@ def main():
 	link = "https://viewdns.info/reversewhois/?q=" + query
 	user = "Mozilla/5.0 (X11; Linux i586; rv:71.0) Gecko/20100101 Firefox/71.0"
 	headers = {"User-Agent": user}
-	request = requests.get(link, headers=headers)
-	table1 = bs4(request.content, "html5lib")
-	table1 = table1.findAll('table')[3].encode()
+	request = requests.get(link, headers=headers) #requesting the page to get information according to query 
+	table1 = bs4(request.content, "html5lib")  #getting the contents of that page
+	table1 = table1.findAll('table')[3].encode() # finding the appropriate table
 	try1 = bs4(table1, "html5lib")
-	row = try1.findAll('tr')
+	row = try1.findAll('tr')              #converting the table to readable format
 	test=1
 	mainlist=[]
 	for i in row:
 		if test==1:
-			test+=1
+			test+=1                                  
 			continue
 		else:
-			x=str(i)
-			y=x.split("<td>")
+			x=str(i)                  #Finding and sorting the elements of the table
+			y=x.split("<td>")                            
 			tmplist=[]
 			for j in y:
 				if j=='<tr>':
@@ -37,6 +38,7 @@ def main():
 						z="N/A"
 					tmplist.append(z)
 			mainlist.append(tmplist)
+	
 	if len(mainlist)==0:
 		print(prRed("Insufficient Data"))
 	else:
@@ -46,8 +48,9 @@ def main():
 			tmpx=l[0]
 			tmpy=l[1]
 			tmpz=l[2]
-			print("{:54}{:35}{}".format(prPurple(tmpx),prYellow(tmpy),prCyan(tmpz)))
+			print("{:54}{:35}{}".format(prPurple(tmpx),prYellow(tmpy),prCyan(tmpz))) #Printing the output
 			print()
+	
 	xt=input(prCyan("Do you wish to continue?[y/N]:"))
 	print()
 	if xt=="y":
@@ -57,4 +60,4 @@ def main():
 		return None
 	else:
 		return None
-main()
+main() #parent function called at start
