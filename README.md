@@ -11,7 +11,7 @@ ___The details only show up if the name entered is a valid name. The data is scr
 
 ## Uses of Reverse WHOIS:
 
-1. Reverse Whois can be used to identify potantial trademark infringements by searching for all domains registered by a known offender.
+1. Reverse Whois can be used to identify potential trademark infringements by searching for all domains registered by a known offender.
 
 2. Comapnies can track their companies domain name portfolio over time to identify new domains registered by users in your organisation.
 
